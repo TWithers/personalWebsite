@@ -9,7 +9,6 @@ use Saloon\Http\Connector;
 
 class TuyaConnector extends Connector
 {
-
     protected ?string $token = null;
 
     public function __construct(
