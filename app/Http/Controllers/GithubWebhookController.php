@@ -12,10 +12,13 @@ class GithubWebhookController extends Controller
      */
     public function __invoke(Request $request)
     {
+        $event = $request->header('x-github-event');
+        $branch = $request->get('ref');
+
         $api = app(TuyaConnector::class);
         $api->auth()->getToken();
         $api->devices()->sendProperties(config('services.tuya.deviceId'), ['manual_feed' => 1]);
 
-        return response()->json(['message' => 'ok']);
+        return response()->json(['message' => 'ok', 'event' => $event, 'branch' => $branch]);
     }
 }
