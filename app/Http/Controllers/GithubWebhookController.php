@@ -22,7 +22,7 @@ class GithubWebhookController extends Controller
             'action' => 'nothing',
         ];
 
-        if ($event !== 'push' && (str($branch)->endsWith('main') || str($branch)->endsWith('master'))) {
+        if ($event !== 'push' || (! str($branch)->endsWith('main') && ! str($branch)->endsWith('master'))) {
             return response()->json($response);
         }
 
