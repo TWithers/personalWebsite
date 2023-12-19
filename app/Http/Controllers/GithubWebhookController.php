@@ -16,17 +16,19 @@ class GithubWebhookController extends Controller
         $branch = $request->get('ref');
 
         $response = [
-            'message' => 'ok',
+            'result' => 'ok',
             'event' => $event,
             'branch' => $branch,
-            'action' => 'nothing',
         ];
 
         if ($event !== 'push' || (! str($branch)->endsWith('main') && ! str($branch)->endsWith('master'))) {
+            $response['action'] = 'skip';
+            $response['message'] = 'Unsupported event or branch';
             return response()->json($response);
         }
 
         $response['action'] = 'dispense';
+        $response['message'] = '1 portion dispensed';
 
         $api = app(TuyaConnector::class);
         $api->auth()->getToken();
