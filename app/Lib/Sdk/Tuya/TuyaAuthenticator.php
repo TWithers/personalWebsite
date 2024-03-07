@@ -35,13 +35,13 @@ class TuyaAuthenticator implements Authenticator
         $headers = ''; //$request->headers()->all();
         $url = $request->getRequest()->resolveEndpoint();
         if ($request->query()->isNotEmpty()) {
-            $url .= '?' . http_build_query($request->query()->all());
+            $url .= '?'.http_build_query($request->query()->all());
         }
 
         $arrayToSign = [$method, $content, $headers, $url];
         $stringToSign = implode("\n", $arrayToSign);
-        $toSign = $this->clientId . $this->token . $timestamp . $stringToSign;
+        $toSign = $this->clientId.$this->token.$timestamp.$stringToSign;
 
-        return strtoupper(hash_hmac('sha256', $toSign , $this->clientSecret));
+        return strtoupper(hash_hmac('sha256', $toSign, $this->clientSecret));
     }
 }

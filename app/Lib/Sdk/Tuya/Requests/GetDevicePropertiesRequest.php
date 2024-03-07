@@ -2,10 +2,8 @@
 
 namespace App\Lib\Sdk\Tuya\Requests;
 
-use App\Lib\Sdk\Tuya\Responses\AccessToken;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Http\Response;
 
 class GetDevicePropertiesRequest extends Request
 {
@@ -17,7 +15,7 @@ class GetDevicePropertiesRequest extends Request
     }
 
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function resolveEndpoint(): string
     {

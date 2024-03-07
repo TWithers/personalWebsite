@@ -24,6 +24,7 @@ class GithubWebhookController extends Controller
         if ($event !== 'push' || (! str($branch)->endsWith('main') && ! str($branch)->endsWith('master'))) {
             $response['action'] = 'skip';
             $response['message'] = 'Unsupported event or branch';
+
             return response()->json($response);
         }
 
