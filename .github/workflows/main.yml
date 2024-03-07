@@ -25,3 +25,9 @@ jobs:
         env:
           OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          pr_reviewer.require_tests_review: false
+          pr_reviewer.enable_review_labels_security: false
+          pr_reviewer.enable_review_labels_effort: false
+          pr_reviewer.enable_help_text: false
+          pr_description.publish_labels: false
+          pr_description.enable_help_comment: false
