@@ -5,7 +5,7 @@ namespace App\Lib\Sdk\Tuya\Responses;
 use Saloon\Contracts\DataObjects\WithResponse;
 use Saloon\Traits\Responses\HasResponse;
 
-class DeviceList implements WithResponse, \ArrayAccess
+class DeviceList implements \ArrayAccess, WithResponse
 {
     use HasResponse;
 

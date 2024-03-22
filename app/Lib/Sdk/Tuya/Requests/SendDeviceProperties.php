@@ -2,11 +2,9 @@
 
 namespace App\Lib\Sdk\Tuya\Requests;
 
-use App\Lib\Sdk\Tuya\Responses\AccessToken;
 use Saloon\Contracts\Body\HasBody;
 use Saloon\Enums\Method;
 use Saloon\Http\Request;
-use Saloon\Http\Response;
 use Saloon\Traits\Body\HasJsonBody;
 
 class SendDeviceProperties extends Request implements HasBody
@@ -20,8 +18,9 @@ class SendDeviceProperties extends Request implements HasBody
         protected array $properties,
     ) {
     }
+
     /**
-     * @inheritDoc
+     * {@inheritDoc}
      */
     public function resolveEndpoint(): string
     {
@@ -34,5 +33,4 @@ class SendDeviceProperties extends Request implements HasBody
             'properties' => $this->properties,
         ];
     }
-
 }
